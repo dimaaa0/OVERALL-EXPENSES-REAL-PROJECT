@@ -1,0 +1,243 @@
+.statistics {
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+    align-items: center;
+
+    .container {
+        width: 100%;
+        max-width: 1540px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+
+        .name {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            height: 100%;
+            margin-bottom: 20px;
+
+            .image {
+                padding: 8px;
+                background: var(--main-blue);
+                border-radius: 10px;
+
+                img {
+                    width: 36px;
+                    height: 36px;
+                }
+            }
+
+            .text {
+                display: flex;
+                flex-direction: column;
+
+                h1 {
+                    font-family: 'FB';
+                    font-size: 36px;
+                    color: #1d1c1c;
+                }
+
+                p {
+                    transform: translateY(-5px);
+                    font-family: 'FL';
+                    font-size: 20px;
+                    color: #1d1c1c;
+                    margin-left: 2px;
+                }
+            }
+        }
+    }
+
+    .total {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+
+        .total-first {
+            max-width: 500px;
+            position: relative;
+            display: flex;
+            justify-content: space-around;
+            flex-direction: column;
+            border-radius: 20px;
+            margin-bottom: 20px;
+            margin-top: 26px;
+            width: 100%;
+            padding: 20px;
+            background: #ffffff;
+            animation: move 1.8s infinite ease-in;
+            animation-delay: 0.4s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.212);
+        }
+
+        button {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            right: 20px;
+            top: 20px;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            border-radius: 20px;
+            background: var(--main-blue);
+
+            &:hover {
+                background: var( --main-hovered );
+                transition: 300ms;
+            }
+        }
+
+        .amount {
+            font-family: 'FB';
+            font-size: 24px;
+            color: var(--main-color);
+            margin-bottom: 20px;
+        }
+
+        .subtotal {
+            max-width: 400px;
+            overflow: auto;
+            display: flex;
+            gap: 8px;
+
+            .value {
+                font-family: 'FB';
+                font-size: 42px;
+                color: black;
+            }
+
+            .symbol {
+                font-weight: 500;
+                font-size: 42px;
+                color: black;
+            }
+        }
+
+        .overall {
+            transform: translateY(-10px);
+            font-family: 'FR';
+            font-size: 20px;
+            color: var(--main-color);
+            font-weight: 100;
+        }
+    }
+
+    .total-second {
+        max-width: 500px;
+        flex-direction: column;
+        display: flex;
+        justify-content: space-around;
+        border-radius: 20px;
+        margin-bottom: 20px;
+        margin-top: 26px;
+        width: 100%;
+        padding: 26px;
+        background: #ffffff;
+        animation: move 1.8s infinite ease-in;
+        animation-delay: 0.8s;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.212);
+
+
+
+        .amount {
+            font-family: 'FB';
+            font-size: 24px;
+            color: var(--main-color);
+            margin-bottom: 20px;
+        }
+
+        .subtotal {
+            display: flex;
+            gap: 8px;
+
+            .value {
+                font-family: 'FB';
+                font-size: 42px;
+                color: black;
+            }
+
+            .symbol {
+                font-weight: 500;
+                font-size: 42px;
+                color: black;
+            }
+
+        }
+
+        .overall {
+            font-family: 'FL';
+            font-size: 20px;
+            font-weight: 100;
+        }
+    }
+
+    .total-third {
+        max-width: 500px;
+        flex-direction: column;
+        display: flex;
+        justify-content: space-around;
+        border-radius: 20px;
+        margin-bottom: 20px;
+        margin-top: 26px;
+        width: 100%;
+        padding: 26px;
+        background: #ffffff;
+        animation: move 1.8s infinite ease-in;
+        animation-delay: 1.2s;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.212);
+
+        .amount {
+            font-family: 'FB';
+            font-size: 24px;
+            color: var(--main-color);
+            margin-bottom: 20px;
+        }
+
+        .subtotal {
+            display: flex;
+            gap: 8px;
+
+            .value {
+
+                font-family: 'FB';
+                font-size: 42px;
+                color: black;
+            }
+
+            .symbol {
+                font-weight: 500;
+                font-size: 42px;
+                color: black;
+            }
+
+        }
+
+        .overall {
+            font-family: 'FL';
+            font-size: 20px;
+            font-weight: 100;
+        }
+    }
+}
+
+
+@keyframes move {
+    0% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateY(-4px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
