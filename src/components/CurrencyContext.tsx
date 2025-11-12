@@ -25,6 +25,8 @@ export const SpendingContext = createContext<{
     setSpendings: () => { },
 });
 
+
+
 // Мне короче надо щас в контексте
 //  добавить получение инфы из lcal storage
 //  чтобы особо ниего не менять и дальше все
@@ -40,7 +42,7 @@ export const SpendingContext = createContext<{
 //     setSpendings: React.Dispatch<React.SetStateAction<SpendingType[]>>;
 // }>({
 //     spendings: [],
-//     setSpendings: () => {},
+//     setSpendings: () => { },
 // });
 
 // export const SpendingProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
@@ -58,6 +60,7 @@ export const SpendingContext = createContext<{
 //     useEffect(() => {
 //         localStorage.setItem("spendings", JSON.stringify(spendings));
 //     }, [spendings]);
+
 
 //     return (
 //         <SpendingContext.Provider value={{ spendings, setSpendings }}>
@@ -91,6 +94,3 @@ export const SpendingContext = createContext<{
 //         </div>
 //     );
 // };
-
-<h3>наконец-то работает</h3>
-//poshel naxuy
