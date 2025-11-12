@@ -92,5 +92,3 @@ export const SpendingContext = createContext<{
 //     );
 // };
 
-<h3>наконец-то работает</h3>
-//poshel naxuy
