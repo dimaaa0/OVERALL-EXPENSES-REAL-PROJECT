@@ -9,14 +9,12 @@ const SpendingHistory = () => {
     const [storagedData, setStoragedData] = useState([]);
 
     useEffect(() => {
-        const saved = JSON.parse(localStorage.getItem('spendings')) || [];
-        setStoragedData(saved);
-    }, []);
-
-    useEffect(() => {
-        if (spendings.length > 0) {
+        if (spendings && spendings.length > 0) {
             localStorage.setItem('spendings', JSON.stringify(spendings));
             setStoragedData(spendings);
+        } else {
+            const saved = JSON.parse(localStorage.getItem('spendings')) || [];
+            setStoragedData(saved);
         }
     }, [spendings]);
 

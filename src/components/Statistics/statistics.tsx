@@ -18,6 +18,9 @@ const Statistics = () => {
     });
     const [enteredAmount, setEnteredAmount] = useState('0.00');
 
+    const counter = JSON.parse(localStorage.getItem('spendings'));
+    console.log(counter.length);
+    
 
     const [isOpenModal, setIsOpenModal] = useState(false);
     const openModal = () => setIsOpenModal(true);
@@ -100,7 +103,7 @@ const Statistics = () => {
                             <h1 className='value'>750.00</h1>
                             <h1 className='symbol'>{savedCurrency}</h1>
                         </div>
-                        <h1 className="overall">Amount of records: 2</h1>
+                        <h1 className="overall">Amount of records: {counter.length}</h1>
                     </div>
                     <div className="total-third"
                     >
