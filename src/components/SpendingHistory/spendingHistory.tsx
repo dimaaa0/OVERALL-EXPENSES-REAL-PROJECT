@@ -8,13 +8,11 @@ const SpendingHistory = () => {
     const { currency } = useContext(CurrencyContext);
     const [storagedData, setStoragedData] = useState([]);
 
-    // Загружаем данные из localStorage при первой загрузке
     useEffect(() => {
         const saved = JSON.parse(localStorage.getItem('spendings')) || [];
         setStoragedData(saved);
     }, []);
 
-    // Следим за изменением spendings — обновляем localStorage и state
     useEffect(() => {
         if (spendings.length > 0) {
             localStorage.setItem('spendings', JSON.stringify(spendings));

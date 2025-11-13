@@ -13,10 +13,6 @@ const Statistics = () => {
     const { currency, setCurrency } = useContext(CurrencyContext);
 
 
-    const [isFirstHovered, setIsFirstHovered] = useState(false);
-    const [isSecondHovered, setIsSecondHovered] = useState(false);
-    const [isThirdHovered, setIsThirdHovered] = useState(false);
-
     const [isInitialAmount, setIsInitialAmount] = useState(() => {
         return localStorage.getItem("amount") || "0.00";
     });
@@ -74,12 +70,12 @@ const Statistics = () => {
                 </div>
                 <div className="total">
                     <div className="total-first"
-                        // onMouseEnter={() => setIsFirstHovered(true)}
-                        // onMouseLeave={() => setIsFirstHovered(false)}
-                        // style={{
-                        //     width: isFirstHovered ? "106%" : "100%",
-                        //     transition: "width 0.3s ease, height 0.3s ease",
-                        // }}
+                    // onMouseEnter={() => setIsFirstHovered(true)}
+                    // onMouseLeave={() => setIsFirstHovered(false)}
+                    // style={{
+                    //     width: isFirstHovered ? "106%" : "100%",
+                    //     transition: "width 0.3s ease, height 0.3s ease",
+                    // }}
                     >
                         <h1 className='amount'>Initial amount</h1>
 
@@ -91,13 +87,13 @@ const Statistics = () => {
 
                     </div>
                     <div className="total-second"
-                        // onMouseEnter={() => setIsSecondHovered(true)}
-                        // onMouseLeave={() => setIsSecondHovered(false)}
-                        // style={{
-                        //     width: isSecondHovered ? "106%" : "100%",
-                        //     transition: "width 0.3s ease",
-                        // }}
-                        >
+                    // onMouseEnter={() => setIsSecondHovered(true)}
+                    // onMouseLeave={() => setIsSecondHovered(false)}
+                    // style={{
+                    //     width: isSecondHovered ? "106%" : "100%",
+                    //     transition: "width 0.3s ease",
+                    // }}
+                    >
                         <h1 className='amount'>Spending</h1>
 
                         <div className="subtotal">
@@ -107,12 +103,6 @@ const Statistics = () => {
                         <h1 className="overall">Amount of records: 2</h1>
                     </div>
                     <div className="total-third"
-                        // onMouseEnter={() => setIsThirdHovered(true)}
-                        // onMouseLeave={() => setIsThirdHovered(false)}
-                        // style={{
-                        //     width: isThirdHovered ? "106%" : "100%",
-                        //     transition: "width 0.3s ease",
-                        // }}
                     >
                         <h1 className='amount'>The remaining money</h1>
 
