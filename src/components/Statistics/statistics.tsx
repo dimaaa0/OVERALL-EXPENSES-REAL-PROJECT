@@ -12,10 +12,25 @@ const Statistics = () => {
 
     const { currency, setCurrency } = useContext(CurrencyContext);
 
+    const [storagedData, setStoragedData] = useState([]);
 
-    const [isFirstHovered, setIsFirstHovered] = useState(false);
-    const [isSecondHovered, setIsSecondHovered] = useState(false);
-    const [isThirdHovered, setIsThirdHovered] = useState(false);
+    useEffect(() => {
+        const saved = JSON.parse(localStorage.getItem('spendings')) || [];
+        setStoragedData(saved);
+    }, []);
+
+
+    const [counter, setCounter] = useState(0);
+    const [length, setLength] = useState(storagedData.length);
+
+    console.log(`Updated data: ${length}`);
+
+
+    useEffect(() => {
+        setLength(storagedData.length);
+    }, [length]);
+
+
 
     const [isInitialAmount, setIsInitialAmount] = useState(() => {
         return localStorage.getItem("amount") || "0.00";
@@ -74,12 +89,6 @@ const Statistics = () => {
                 </div>
                 <div className="total">
                     <div className="total-first"
-                        // onMouseEnter={() => setIsFirstHovered(true)}
-                        // onMouseLeave={() => setIsFirstHovered(false)}
-                        // style={{
-                        //     width: isFirstHovered ? "106%" : "100%",
-                        //     transition: "width 0.3s ease, height 0.3s ease",
-                        // }}
                     >
                         <h1 className='amount'>Initial amount</h1>
 
@@ -91,28 +100,16 @@ const Statistics = () => {
 
                     </div>
                     <div className="total-second"
-                        // onMouseEnter={() => setIsSecondHovered(true)}
-                        // onMouseLeave={() => setIsSecondHovered(false)}
-                        // style={{
-                        //     width: isSecondHovered ? "106%" : "100%",
-                        //     transition: "width 0.3s ease",
-                        // }}
-                        >
+                    >
                         <h1 className='amount'>Spending</h1>
 
                         <div className="subtotal">
                             <h1 className='value'>750.00</h1>
                             <h1 className='symbol'>{savedCurrency}</h1>
                         </div>
-                        <h1 className="overall">Amount of records: 2</h1>
+                        <h1 className="overall">Amount of records: {storagedData.length}</h1>
                     </div>
                     <div className="total-third"
-                        // onMouseEnter={() => setIsThirdHovered(true)}
-                        // onMouseLeave={() => setIsThirdHovered(false)}
-                        // style={{
-                        //     width: isThirdHovered ? "106%" : "100%",
-                        //     transition: "width 0.3s ease",
-                        // }}
                     >
                         <h1 className='amount'>The remaining money</h1>
 
