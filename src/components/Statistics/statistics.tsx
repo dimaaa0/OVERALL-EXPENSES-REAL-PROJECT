@@ -14,30 +14,15 @@ const Statistics = () => {
 
     const [storagedData, setStoragedData] = useState([]);
 
-    useEffect(() => {
-        const saved = JSON.parse(localStorage.getItem('spendings')) || [];
-        setStoragedData(saved);
-    }, []);
 
 
-    const [counter, setCounter] = useState(0);
-    const [length, setLength] = useState(storagedData.length);
+    const counter = JSON.parse(localStorage.getItem('spendings'))
 
-    console.log(`Updated data: ${length}`);
-
-
-    useEffect(() => {
-        setLength(storagedData.length);
-    }, [length]);
 
     const [isInitialAmount, setIsInitialAmount] = useState(() => {
         return localStorage.getItem("amount") || "0.00";
     });
     const [enteredAmount, setEnteredAmount] = useState('0.00');
-
-    const counter = JSON.parse(localStorage.getItem('spendings'));
-    console.log(counter.length);
-    
 
     const [isOpenModal, setIsOpenModal] = useState(false);
     const openModal = () => setIsOpenModal(true);
@@ -110,7 +95,8 @@ const Statistics = () => {
                             <h1 className='value'>750.00</h1>
                             <h1 className='symbol'>{savedCurrency}</h1>
                         </div>
-git add src/components/CurrencyContext.tsx
+                        <h3>Number of records: { counter.length }</h3>
+
                     </div>
                     <div className="total-third"
                     >
