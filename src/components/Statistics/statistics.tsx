@@ -8,13 +8,7 @@ import pencil from '../../assets/images/pencil.svg'
 
 const Statistics = () => {
 
-
-
     const { currency, setCurrency } = useContext(CurrencyContext);
-
-    const [storagedData, setStoragedData] = useState([]);
-
-
 
     const counter = JSON.parse(localStorage.getItem('spendings'))
 
@@ -75,7 +69,6 @@ const Statistics = () => {
                 </div>
                 <div className="total">
                     <div className="total-first"
-
                     >
                         <h1 className='amount'>Initial amount</h1>
 
@@ -87,7 +80,6 @@ const Statistics = () => {
 
                     </div>
                     <div className="total-second"
-
                     >
                         <h1 className='amount'>Spending</h1>
 
@@ -95,11 +87,10 @@ const Statistics = () => {
                             <h1 className='value'>750.00</h1>
                             <h1 className='symbol'>{savedCurrency}</h1>
                         </div>
-                        <h3>Number of records: { counter.length }</h3>
 
+                        <h1 className="overall">Amount of records: {counter.length}</h1>
                     </div>
-                    <div className="total-third"
-                    >
+                    <div className="total-third">
                         <h1 className='amount'>The remaining money</h1>
 
                         <div className="subtotal">
