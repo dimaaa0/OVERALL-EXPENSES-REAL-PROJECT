@@ -12,17 +12,10 @@ const Statistics = () => {
 
     const { currency, setCurrency } = useContext(CurrencyContext);
 
-    const [storagedData, setStoragedData] = useState([]);
-
-
-
-    const counter = JSON.parse(localStorage.getItem('spendings'))
-
-
     const [isInitialAmount, setIsInitialAmount] = useState(() => {
         return localStorage.getItem("amount") || "0.00";
     });
-    const [enteredAmount, setEnteredAmount] = useState('0.00');
+    const [enteredAmount, setEnteredAmount] = useState("0.00");
 
     const [isOpenModal, setIsOpenModal] = useState(false);
     const openModal = () => setIsOpenModal(true);
@@ -35,7 +28,13 @@ const Statistics = () => {
         return localStorage.getItem("currency") || "$";
     });
 
-
+    let counter;
+    try {
+        counter = JSON.parse(localStorage.getItem("spendings") || "{}");
+    } catch (e) {
+        console.error("Ошибка парсинга spendings:", e);
+        counter = {};
+    }
 
     const handleCurrencyChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         setPickedCurrency(event.target.value);
@@ -95,7 +94,7 @@ const Statistics = () => {
                             <h1 className='value'>750.00</h1>
                             <h1 className='symbol'>{savedCurrency}</h1>
                         </div>
-                        <h3>Number of records: { counter.length }</h3>
+                        <h3>Number of records: {counter.length}</h3>
 
                     </div>
                     <div className="total-third"

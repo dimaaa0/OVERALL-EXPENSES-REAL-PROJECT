@@ -3,8 +3,8 @@ import Statistics from './components/Statistics/statistics'
 import AddSpending from './components/AddSpending/addSpending'
 import SpendingHistory from './components/SpendingHistory/spendingHistory'
 import { useState } from 'react';
-import { CurrencyContext } from './components/CurrencyContext';
-import { SpendingContext } from './components/CurrencyContext';
+import { CurrencyProvider } from "./components/CurrencyContext";
+import { SpendingProvider } from './components/SpendingContext';
 
 
 function App() {
@@ -20,13 +20,13 @@ function App() {
   const [spendings, setSpendings] = useState<SpendingType[]>([]);
 
   return (
-    <CurrencyContext.Provider value={{ currency, setCurrency }}>
-      <SpendingContext.Provider value={{ spendings, setSpendings }}>
+    <CurrencyProvider value={{ currency, setCurrency }}>
+      <SpendingProvider value={{ spendings, setSpendings }}>
         <Statistics />
         <AddSpending />
         <SpendingHistory />
-      </SpendingContext.Provider>
-    </CurrencyContext.Provider>
+      </SpendingProvider>
+    </CurrencyProvider>
   );
 }
 

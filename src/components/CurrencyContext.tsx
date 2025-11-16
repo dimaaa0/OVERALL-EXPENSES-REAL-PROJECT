@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, ReactNode } from "react";
 
 interface CurrencyContextType {
     currency: string;
@@ -7,20 +7,15 @@ interface CurrencyContextType {
 
 export const CurrencyContext = createContext<CurrencyContextType>({
     currency: "$",
-    setCurrency: (c: string) => { }
+    setCurrency: () => { },
 });
 
-interface SpendingType {
-    description: string;
-    amount: number | null;
-    category: string;
-    date: string;
-}
+export const CurrencyProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+    const [currency, setCurrency] = useState("$");
 
-export const SpendingContext = createContext<{
-    spendings: SpendingType[];
-    setSpendings: React.Dispatch<React.SetStateAction<SpendingType[]>>;
-}>({
-    spendings: [],
-    setSpendings: () => { },
-});
+    return (
+        <CurrencyContext.Provider value={{ currency, setCurrency }}>
+            {children}
+        </CurrencyContext.Provider>
+    );
+};
