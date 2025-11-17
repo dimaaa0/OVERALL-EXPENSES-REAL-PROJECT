@@ -2,7 +2,8 @@ import { useState, useEffect, useContext } from 'react'
 import '../AddSpending/addSpending.scss';
 import plus from '../../assets/images/plus.svg'
 import { CurrencyContext } from '../CurrencyContext';
-import { SpendingContext } from '../CurrencyContext';
+// import { SpendingContext } from '../CurrencyContext';
+import { SpendingContext } from "../SpendingContext";
 
 
 const AddSpending = () => {
@@ -14,8 +15,7 @@ const AddSpending = () => {
         date: string;
     }
 
-    const { currency } = useContext(CurrencyContext);
-
+    const { currency } = useContext(CurrencyContext)
     const { spendings, setSpendings } = useContext(SpendingContext);
     const [description, setDescription] = useState('');
     const [amount, setAmount] = useState(null);
@@ -24,6 +24,8 @@ const AddSpending = () => {
     const [date, setDate] = useState<string>(today);
 
     const [enterMoneyModal, setEnterMoneyModal] = useState(false);
+
+
 
 
     const handleAddSpending = () => {
@@ -45,6 +47,7 @@ const AddSpending = () => {
             setAmount('' as unknown as null);
             setCategory('Food');
             setDate(today);
+            window.location.reload();
 
         } else {
             setEnterMoneyModal(true)
@@ -53,9 +56,8 @@ const AddSpending = () => {
 
     const closeMoneyModal = () => setEnterMoneyModal(false)
 
-    useEffect(() => {
-        console.log('Spendings updated:', spendings);
-    }, [spendings]);
+    // useEffect(() => {
+    // }, [spendings]);
 
 
 

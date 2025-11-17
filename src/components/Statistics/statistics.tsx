@@ -1,22 +1,32 @@
 import { useState, useEffect, useContext } from 'react';
 import '../Statistics/statistics.scss';
 import { CurrencyContext } from '../CurrencyContext';
-
+import { SpendingContext } from '../SpendingContext';
 import wallet from '../../assets/images/wallet.svg'
 import pencil from '../../assets/images/pencil.svg'
 
 
 const Statistics = () => {
 
-    const { currency, setCurrency } = useContext(CurrencyContext);
 
-    const counter = JSON.parse(localStorage.getItem('spendings'))
+
+    const spendings = JSON.parse(localStorage.getItem('spendings') || '[]')
+
+
+   
+
+
+    const { currency, setCurrency } = useContext(CurrencyContext);
 
 
     const [isInitialAmount, setIsInitialAmount] = useState(() => {
         return localStorage.getItem("amount") || "0.00";
     });
-    const [enteredAmount, setEnteredAmount] = useState('0.00');
+
+
+
+
+    const [enteredAmount, setEnteredAmount] = useState("0.00");
 
     const [isOpenModal, setIsOpenModal] = useState(false);
     const openModal = () => setIsOpenModal(true);
@@ -29,7 +39,12 @@ const Statistics = () => {
         return localStorage.getItem("currency") || "$";
     });
 
+    const [counter, setCounter] = useState([]);
 
+    useEffect(() => {
+        const saved = JSON.parse(localStorage.getItem("spendings") || "[]");
+        setCounter(saved);
+    }, []);
 
     const handleCurrencyChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         setPickedCurrency(event.target.value);
@@ -55,6 +70,18 @@ const Statistics = () => {
         localStorage.setItem("amount", isInitialAmount);
         localStorage.setItem("currency", pickedCurrency);
     }, [isInitialAmount, pickedCurrency]);
+
+    let total = 0;
+
+    for (let i = 0; i < spendings.length; i++) {
+        total += spendings[i].amount;
+    }
+
+    console.log(total);
+
+
+    let remainedAmount = isInitialAmount - total
+
     return (
         <div className="statistics">
             <div className="container">
@@ -84,9 +111,10 @@ const Statistics = () => {
                         <h1 className='amount'>Spending</h1>
 
                         <div className="subtotal">
-                            <h1 className='value'>750.00</h1>
+                            <h1 className='value'>{total}</h1>
                             <h1 className='symbol'>{savedCurrency}</h1>
                         </div>
+
 
                         <h1 className="overall">Amount of records: {counter.length}</h1>
                     </div>
@@ -94,7 +122,7 @@ const Statistics = () => {
                         <h1 className='amount'>The remaining money</h1>
 
                         <div className="subtotal">
-                            <h1 className='value'>5252.00</h1>
+                            <h1 className='value'>{remainedAmount}</h1>
                             <h1 className='symbol'>{savedCurrency}</h1>
                         </div>
                     </div>

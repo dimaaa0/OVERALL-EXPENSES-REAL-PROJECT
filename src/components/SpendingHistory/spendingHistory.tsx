@@ -1,19 +1,24 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { SpendingContext, CurrencyContext } from '../CurrencyContext';
+import { CurrencyContext } from '../CurrencyContext';
+import { SpendingContext } from '../SpendingContext';
 import calendar from '../../assets/images/calendar-days.svg';
 import '../SpendingHistory/spendingHistory.scss';
 
 const SpendingHistory = () => {
+
+
     const { spendings } = useContext(SpendingContext);
     const { currency } = useContext(CurrencyContext);
     const [storagedData, setStoragedData] = useState([]);
 
     useEffect(() => {
+
         if (spendings && spendings.length > 0) {
             localStorage.setItem('spendings', JSON.stringify(spendings));
             setStoragedData(spendings);
         } else {
-            const saved = JSON.parse(localStorage.getItem('spendings')) || [];
+            const rawData = localStorage.getItem('spendings') || '[]';
+            const saved = rawData ? JSON.parse(rawData) : [];
             setStoragedData(saved);
         }
     }, [spendings]);
