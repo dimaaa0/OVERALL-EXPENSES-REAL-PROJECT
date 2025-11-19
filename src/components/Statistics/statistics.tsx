@@ -77,7 +77,6 @@ const Statistics = () => {
         total += spendings[i].amount;
     }
 
-    console.log(total);
 
 
     let remainedAmount = isInitialAmount - total

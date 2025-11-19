@@ -23,8 +23,8 @@
 
         &-content {
             position: relative;
-            height: 260px;
-            max-height: 260px;
+            height: 280px;
+            max-height: 280px;
             overflow: hidden;
             background: white;
             display: flex;
@@ -35,6 +35,72 @@
             padding: 32px 20px;
             border-radius: 8px;
             box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.212);
+
+            .line-data {
+                scrollbar-width: thin;
+                border-radius: 10px;
+                padding: 0 10px 0 0;
+                scroll-behavior: smooth;
+                height: 200px;
+                width: 100%;
+                overflow-y: auto;
+                margin-top: 50px;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+
+                .food {
+                    background: #77eb67b2;
+                }
+
+                .transport {
+                    background: #36a3ebb2;
+                }
+
+                .education {
+                    background: #e93737b4;
+                }
+
+                .health {
+                    background: #fa66ffb9;
+                }
+
+                .shopping {
+                    background: #ffa040ce;
+                }
+
+                .entertainment {
+                    background: #ffee00ff;
+                }
+
+                .other {
+                    background: #380e8691;
+                }
+
+                .line {
+
+                    display: flex;
+                    flex-direction: column;
+                    gap: 2px;
+
+                    .info {
+                        display: flex;
+                        justify-content: space-between;
+
+                        h3 {
+                            font-family: 'FR';
+                            font-weight: 100;
+                            font-size: 16px;
+                        }
+                    }
+
+                    &-content {
+                        padding: 12px;
+                        border-radius: 8px;
+                        width: 100%;
+                    }
+                }
+            }
 
             .title {
                 width: 100%;
@@ -55,8 +121,8 @@
         &-content {
             background: white;
             padding: 30px;
-            height: 260px;
-            max-height: 260px;
+            height: 280px;
+            max-height: 280px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -76,8 +142,6 @@
             }
 
             .spending-list {
-                // background: #00000059;
-                // border: 1px solid #00000056;
                 scrollbar-width: thin;
                 border-radius: 10px;
                 padding: 0 10px 0 0;
