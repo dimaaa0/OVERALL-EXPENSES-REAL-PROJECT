@@ -1,4 +1,4 @@
-.storage {
+ .storage {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -23,8 +23,8 @@
 
         &-content {
             position: relative;
-            height: 260px;
-            max-height: 260px;
+            height: 300px;
+            max-height: 300px;
             overflow: hidden;
             background: white;
             display: flex;
@@ -55,8 +55,8 @@
         &-content {
             background: white;
             padding: 30px;
-            height: 260px;
-            max-height: 260px;
+            height: 300px;
+            max-height: 300px;
             display: flex;
             align-items: center;
             justify-content: center;
