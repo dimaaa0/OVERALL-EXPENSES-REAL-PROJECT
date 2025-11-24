@@ -12,11 +12,8 @@ const Statistics = () => {
 
     const spendings = JSON.parse(localStorage.getItem('spendings') || '[]')
 
-
-   
-
-
-    const { currency, setCurrency } = useContext(CurrencyContext);
+    // const { currency, setCurrency } = useContext(CurrencyContext);
+    const { currency, setCurrency } = localStorage.getItem('currency')
 
 
     const [isInitialAmount, setIsInitialAmount] = useState(() => {
@@ -60,6 +57,7 @@ const Statistics = () => {
         setEnteredAmount("0.00");
         setCurrencySymbol(pickedCurrency);
         closeModal();
+        window.location.reload();
         setCurrency(pickedCurrency);
     };
 
