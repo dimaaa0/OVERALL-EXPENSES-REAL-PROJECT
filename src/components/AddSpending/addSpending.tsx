@@ -13,6 +13,7 @@ const AddSpending = () => {
         amount: null | number;
         category: string;
         date: string;
+        id: string;
     }
 
     const { currency } = useContext(CurrencyContext)
@@ -20,6 +21,7 @@ const AddSpending = () => {
     const [description, setDescription] = useState('');
     const [amount, setAmount] = useState(null);
     const [category, setCategory] = useState('Food');
+    const [id, setId] = useState(0)
     const today = new Date().toISOString().split('T')[0];
     const [date, setDate] = useState<string>(today);
 
@@ -36,6 +38,7 @@ const AddSpending = () => {
                 amount,
                 category,
                 date,
+                id: crypto.randomUUID(),
             };
 
             const updatedSpendings = [...spendings, newSpending];
@@ -47,6 +50,7 @@ const AddSpending = () => {
             setAmount('' as unknown as null);
             setCategory('Food');
             setDate(today);
+            setId('')
             window.location.reload();
 
         } else {
@@ -54,11 +58,8 @@ const AddSpending = () => {
         }
     };
 
+
     const closeMoneyModal = () => setEnterMoneyModal(false)
-
-    // useEffect(() => {
-    // }, [spendings]);
-
 
 
     return (
