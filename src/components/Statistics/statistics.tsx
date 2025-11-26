@@ -12,9 +12,13 @@ const Statistics = () => {
 
     const spendings = JSON.parse(localStorage.getItem('spendings') || '[]')
 
-    // const { currency, setCurrency } = useContext(CurrencyContext);
-    const { currency, setCurrency } = localStorage.getItem('currency')
+    const [currency, setCurrency] = useState(() => {
+        return localStorage.getItem('currency') || '$';
+    });
 
+    useEffect(() => {
+        localStorage.setItem('currency', currency);
+    }, [currency]);
 
     const [isInitialAmount, setIsInitialAmount] = useState(() => {
         return localStorage.getItem("amount") || "0.00";
