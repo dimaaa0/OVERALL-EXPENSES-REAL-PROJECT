@@ -2,7 +2,6 @@ import { useState, useEffect, useContext } from 'react'
 import '../AddSpending/addSpending.scss';
 import plus from '../../assets/images/plus.svg'
 import { CurrencyContext } from '../CurrencyContext';
-// import { SpendingContext } from '../CurrencyContext';
 import { SpendingContext } from "../SpendingContext";
 
 
@@ -16,7 +15,9 @@ const AddSpending = () => {
         id: string;
     }
 
-    const { currency } = useContext(CurrencyContext)
+    // const { currencyG } = useContext(CurrencyContext)
+
+    const currency = localStorage.getItem('currency')
     const { spendings, setSpendings } = useContext(SpendingContext);
     const [description, setDescription] = useState('');
     const [amount, setAmount] = useState(null);
@@ -57,7 +58,6 @@ const AddSpending = () => {
             setEnterMoneyModal(true)
         }
     };
-
 
     const closeMoneyModal = () => setEnterMoneyModal(false)
 

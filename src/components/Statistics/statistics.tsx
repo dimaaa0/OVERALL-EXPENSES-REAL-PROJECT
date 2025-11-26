@@ -13,10 +13,8 @@ const Statistics = () => {
     const spendings = JSON.parse(localStorage.getItem('spendings') || '[]')
 
 
-
-
-
-    const { currency, setCurrency } = useContext(CurrencyContext);
+    // const { currency, setCurrency } = useContext(CurrencyContext);
+    const { currency, setCurrency } = localStorage.getItem('currency')
 
 
     const [isInitialAmount, setIsInitialAmount] = useState(() => {
@@ -60,7 +58,8 @@ const Statistics = () => {
         setEnteredAmount("0.00");
         setCurrencySymbol(pickedCurrency);
         closeModal();
-        window.location.reload()
+        window.location.reload();
+        setCurrency(pickedCurrency);
     };
 
     const savedAmount = localStorage.getItem("amount") || "0.00";
@@ -79,7 +78,6 @@ const Statistics = () => {
 
 
 
-    let remainedAmount = isInitialAmount - total
 
     return (
         <div className="statistics">

@@ -3,13 +3,14 @@ import { CurrencyContext } from '../CurrencyContext';
 import { SpendingContext } from '../SpendingContext';
 import calendar from '../../assets/images/calendar-days.svg';
 import '../SpendingHistory/spendingHistory.scss';
+import close from '../../assets/images/close.png'
 
 const SpendingHistory = () => {
 
     const [isFood, setIsFood] = useState(false)
     const [foodAmount, setFoodAmount] = useState(0)
     const [isTransport, setIsTransport] = useState(false)
-    const [transportAmont, setTransportAmount] = useState(0)
+    const [transportAmount, setTransportAmount] = useState(0)
     const [isEducation, setIsEducation] = useState(false)
     const [educationAmount, setEducationAmount] = useState(0)
     const [isHealth, setIsHealth] = useState(false)
@@ -22,14 +23,13 @@ const SpendingHistory = () => {
     const [OtherAmount, setOtherAmount] = useState(0)
 
     const { spendings, setSpendings } = useContext(SpendingContext);
-    // const { currency, setCurrency } = useContext(CurrencyContext);
-
     const currency = localStorage.getItem('currency');
-    console.log(currency);
-
     const [storagedData, setStoragedData] = useState([]);
 
-    const [hovered, setHovered] = useState(false)
+    const [hoveredIndex, setHoveredIndex] = useState(null);
+
+
+
 
     useEffect(() => {
 
@@ -160,6 +160,45 @@ const SpendingHistory = () => {
         }
     }, [spendings]);
 
+    const categories = [
+        { shownItem: isFood, name: 'Food', amount: foodAmount, className: 'food', visible: false },
+        { shownItem: isTransport, name: 'Transport', amount: transportAmount, className: 'transport', visible: false },
+        { shownItem: isEducation, name: 'Education', amount: educationAmount, className: 'education', visible: false },
+        { shownItem: isHealth, name: 'Health', amount: healthAmount, className: 'health', visible: false },
+        { shownItem: isShopping, name: 'Shopping', amount: shoppingAmount, className: 'shopping', visible: false },
+        { shownItem: isEntertainment, name: 'Entertainment', amount: entertainmentAmount, className: 'entertainment', visible: false },
+        { shownItem: isOther, name: 'Other', amount: OtherAmount, className: 'other', visible: false },
+    ]
+
+    for (let i = 0; i < categories.length; i++) {
+        if (categories[i].amount > 0) {
+            categories[i].visible = true
+        } else {
+            categories[i].visible = false
+        }
+
+    }
+
+    const sortedCategories = categories.sort((a, b) => b.amount - a.amount)
+
+
+    const handleDelete = (id) => {
+        const newList = spendings.filter(item => item.id !== id);
+        setSpendings(newList);
+        localStorage.setItem("spendings", JSON.stringify(newList));
+        window.location.reload()
+    };
+
+    const handleHover = (index) => {
+        setHoveredIndex(index);
+        console.log(index)
+    };
+
+    const handleCancelHover = () => {
+        setHoveredIndex(null);
+    };
+
+    const filteredCaregories = sortedCategories.includes
 
 
     return (
@@ -169,83 +208,21 @@ const SpendingHistory = () => {
                     <div className="byCategories-content">
                         <h2 className="title">Spending by Categories</h2>
                         <div className="line-data">
-                            {isFood && (
-                                <div className="line ">
+                            {sortedCategories.map((cat) => (
+                                <div className="line"
+                                    key={cat.name}
+                                    style={{
+                                        display: cat.visible ? 'block' : 'none'
+                                    }}
+                                >
                                     <div className="info">
-                                        <h3 className='name'>Food</h3>
-                                        <h3 className='expenses'>{foodAmount} {currency}</h3>
+                                        <h3 className='name'>{cat.name}</h3>
+                                        <h3 className='expenses'>{cat.amount} {currency}</h3>
                                     </div>
-                                    <div className="line-content food"
-                                    >
+                                    <div className={`line-content ${cat.className}`}>
                                     </div>
                                 </div>
-                            )}
-                            {isTransport && (
-                                <div className="line">
-                                    <div className="info">
-                                        <h3 className='name'>Transport</h3>
-                                        <h3 className='expenses '>{transportAmont} {currency}</h3>
-                                    </div>
-                                    <div className="line-content transport"
-                                    >
-                                    </div>
-                                </div>
-                            )}
-                            {isEducation && (
-                                <div className="line">
-                                    <div className="info">
-                                        <h3 className='name'>Education</h3>
-                                        <h3 className='expenses '>{educationAmount} {currency}</h3>
-                                    </div>
-                                    <div className="line-content education"
-                                    >
-                                    </div>
-                                </div>
-                            )}
-                            {isHealth && (
-                                <div className="line">
-                                    <div className="info">
-                                        <h3 className='name'>Health</h3>
-                                        <h3 className='expenses '>{healthAmount} {currency}</h3>
-                                    </div>
-                                    <div className="line-content health"
-                                    >
-                                    </div>
-                                </div>
-                            )}
-                            {isShopping && (
-                                <div className="line">
-                                    <div className="info">
-                                        <h3 className='name'>Shopping</h3>
-                                        <h3 className='expenses '>{shoppingAmount} {currency}</h3>
-                                    </div>
-                                    <div className="line-content shopping"
-                                    >
-                                    </div>
-                                </div>
-                            )}
-                            {isEntertainment && (
-                                <div className="line">
-                                    <div className="info">
-                                        <h3 className='name'>Entertainment</h3>
-                                        <h3 className='expenses '>{entertainmentAmount} {currency}</h3>
-                                    </div>
-                                    <div className="line-content entertainment"
-                                    >
-                                    </div>
-                                </div>
-                            )}
-                            {isOther && (
-                                <div className="line">
-                                    <div className="info">
-                                        <h3 className='name'>Other</h3>
-                                        <h3 className='expenses '>{OtherAmount} {currency}</h3>
-                                    </div>
-                                    <div className="line-content other"
-                                    >
-                                    </div>
-                                </div>
-                            )}
+                            ))}
 
                         </div>
                     </div>
@@ -258,8 +235,19 @@ const SpendingHistory = () => {
                         {storagedData.length > 0 ? (
                             <div className="spending-list">
                                 <ul>
-                                    {[...spendings].reverse().map((item, index) => (
-                                        <li key={index}>
+                                    {[...spendings].reverse().map((item) => (
+                                        <li
+                                            key={item.id}
+                                            onMouseEnter={() => handleHover(item.id)}
+                                            onMouseLeave={handleCancelHover}
+                                        >
+                                            {hoveredIndex === item.id && (
+                                                <img
+                                                    className='close'
+                                                    src={close}
+                                                    onClick={() => handleDelete(item.id)}
+                                                />
+                                            )}
                                             <div
                                                 className="line"
                                                 style={{
@@ -327,7 +315,7 @@ const SpendingHistory = () => {
                     </div>
                 </div>
             </div>
-        </div >
+        </div>
     );
 };
 
