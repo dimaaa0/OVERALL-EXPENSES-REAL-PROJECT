@@ -89,7 +89,7 @@
             background: var(--main-blue);
 
             &:hover {
-                background: var( --main-hovered );
+                background: var(--main-hovered);
                 transition: 300ms;
             }
         }
@@ -238,5 +238,26 @@
 
     100% {
         transform: translateY(0);
+    }
+}
+
+
+@media (max-width: 870px) {
+    .statistics{
+        padding: 0 20px;
+    }
+    .total {
+        width: 100% !important;
+        flex-direction: column;
+        gap: 0 !important;
+        margin-bottom: 0px ;
+        margin-top: 0px ;
+
+        .total-first,
+        .total-second,
+        .total-third {
+            width: 100% !important;
+            max-width: 100% !important;
+        }
     }
 }
