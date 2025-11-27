@@ -12,10 +12,13 @@ const Statistics = () => {
 
     const spendings = JSON.parse(localStorage.getItem('spendings') || '[]')
 
+    const [currency, setCurrency] = useState(() => {
+        return localStorage.getItem('currency') || '$';
+    });
 
-    // const { currency, setCurrency } = useContext(CurrencyContext);
-    const { currency, setCurrency } = localStorage.getItem('currency')
-
+    useEffect(() => {
+        localStorage.setItem('currency', currency);
+    }, [currency]);
 
     const [isInitialAmount, setIsInitialAmount] = useState(() => {
         return localStorage.getItem("amount") || "0.00";
@@ -78,6 +81,7 @@ const Statistics = () => {
 
 
 
+    let remainedAmount = isInitialAmount - total
 
     return (
         <div className="statistics">
@@ -167,5 +171,7 @@ const Statistics = () => {
         </div >
     )
 }
+
+
 
 export default Statistics

@@ -10,6 +10,9 @@ import { SpendingProvider } from './components/SpendingContext';
 
 function App() {
 
+  
+   
+
   interface SpendingType {
     description: string;
     amount: number | null;
@@ -17,7 +20,7 @@ function App() {
     date: string;
   }
 
-  const [currency, setCurrency] = useState(localStorage.getItem("currency") || "$");
+  const [currency, setCurrency] = useState(localStorage.getItem("currency") ||  localStorage.setItem('currency', '$'));
   const [spendings, setSpendings] = useState<SpendingType[]>([]);
 
   const savePosition = () => {

@@ -274,7 +274,7 @@ const SpendingHistory = () => {
                                                 <h5 className="description">{item.description}</h5>
                                                 <div className="data">
                                                     <h5
-                                                        className="category"
+                                                        className="categoryName"
                                                         style={{
                                                             color:
                                                                 item.category === 'Food'

@@ -15,7 +15,6 @@ const AddSpending = () => {
         id: string;
     }
 
-    // const { currencyG } = useContext(CurrencyContext)
 
     const currency = localStorage.getItem('currency')
     const { spendings, setSpendings } = useContext(SpendingContext);
