@@ -230,7 +230,7 @@ const SpendingHistory = () => {
 
                 <div className="spendingHistory">
                     <div className="spendingHistory-content">
-                        <h2>Spending History</h2>
+                        <h2 className='spendingHistoryName'>Spending History</h2>
 
                         {storagedData.length > 0 ? (
                             <div className="spending-list">

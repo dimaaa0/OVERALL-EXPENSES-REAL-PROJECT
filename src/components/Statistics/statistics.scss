@@ -20,6 +20,8 @@
             height: 100%;
             margin-bottom: 20px;
 
+            .description{
+            }
             .image {
                 padding: 8px;
                 background: var(--main-blue);
@@ -243,9 +245,6 @@
 
 
 @media (max-width: 870px) {
-    .statistics{
-        padding: 0 20px;
-    }
     .total {
         width: 100% !important;
         flex-direction: column;
@@ -259,5 +258,16 @@
             width: 100% !important;
             max-width: 100% !important;
         }
+    }
+}
+
+@media (max-width:400px) {
+    .text h1{
+        width: 130px;
+        line-height: 30px;
+        transform: translateY(-10px);
+    }
+    .description {
+        width: 180px;
     }
 }

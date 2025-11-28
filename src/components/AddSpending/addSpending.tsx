@@ -67,7 +67,7 @@ const AddSpending = () => {
         <div className="addSpending">
             <div className="container">
                 <div className="addSpending-content">
-                    <h2>Add new spending</h2>
+                    <h2 className='addName'>Add new spending</h2>
                     <div className="category">
                         <div className="blank">
                             <h3>Description</h3>

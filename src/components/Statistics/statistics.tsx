@@ -92,7 +92,7 @@ const Statistics = () => {
                     </div>
                     <div className="text">
                         <h1>Overall expenses</h1>
-                        <p>Manage your finances by app</p>
+                        <p className='description'>Manage your finances by app</p>
                     </div>
                 </div>
                 <div className="total">
