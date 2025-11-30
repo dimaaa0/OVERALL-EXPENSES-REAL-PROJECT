@@ -34,4 +34,4 @@ JavaScript / TypeScript
 
 LocalStorage 
 
-API Integration
+Apache ECharts
