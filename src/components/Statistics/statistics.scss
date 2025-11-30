@@ -20,8 +20,6 @@
             height: 100%;
             margin-bottom: 20px;
 
-            .description{
-            }
             .image {
                 padding: 8px;
                 background: var(--main-blue);
@@ -67,7 +65,7 @@
             justify-content: space-around;
             flex-direction: column;
             border-radius: 20px;
-            margin-bottom: 20px;
+            // margin-bottom: 20px;
             margin-top: 26px;
             width: 100%;
             padding: 20px;
@@ -136,7 +134,6 @@
         display: flex;
         justify-content: space-around;
         border-radius: 20px;
-        margin-bottom: 20px;
         margin-top: 26px;
         width: 100%;
         padding: 26px;
@@ -185,7 +182,6 @@
         display: flex;
         justify-content: space-around;
         border-radius: 20px;
-        margin-bottom: 20px;
         margin-top: 26px;
         width: 100%;
         padding: 26px;
@@ -245,12 +241,17 @@
 
 
 @media (max-width: 870px) {
+
+    .statistics {
+        padding: 20px 20px 0 20px;
+    }
+
     .total {
         width: 100% !important;
         flex-direction: column;
         gap: 0 !important;
-        margin-bottom: 0px ;
-        margin-top: 0px ;
+        margin-bottom: 0px;
+        margin-top: 0px;
 
         .total-first,
         .total-second,
@@ -262,11 +263,12 @@
 }
 
 @media (max-width:400px) {
-    .text h1{
+    .text h1 {
         width: 130px;
         line-height: 30px;
         transform: translateY(-10px);
     }
+
     .description {
         width: 180px;
     }

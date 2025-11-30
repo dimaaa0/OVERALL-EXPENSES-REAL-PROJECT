@@ -103,7 +103,6 @@
             }
 
             .title {
-                width: 100%;
                 left: 20px;
                 top: 32px;
                 position: absolute;
@@ -205,6 +204,8 @@
                         .info {
                             display: flex;
                             flex-direction: column;
+                            justify-content: center;
+                            align-items: center;
                             gap: 8px;
                             margin-left: 10px;
 
@@ -247,7 +248,7 @@
                         .amount {
                             font-family: 'FR';
                             font-size: 22px;
-                            min-width: 60px;
+                            // min-width: 60px;
                         }
                     }
                 }
@@ -262,11 +263,38 @@
     }
 }
 
-@media (max-width: 380px) {
+@media (max-width:440px) {
+    li {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .info {
+        margin-left: 0 !important;
+    }
     .spendingHistoryName{
-        font-size: 1.3rem !important;
+        left: auto !important;
+    }
+
+    .spendingHistory-content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
     }
     .title{
+        left: auto !important;
+    }
+}
+
+@media (max-width: 380px) {
+    .spendingHistoryName {
+        font-size: 1.3rem !important;
+    }
+
+    .title {
         font-size: 1.3rem !important;
     }
 }
+
+//блять просто amount закинь вниз, под info

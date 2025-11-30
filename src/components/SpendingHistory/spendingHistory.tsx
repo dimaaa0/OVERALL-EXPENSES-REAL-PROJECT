@@ -191,7 +191,6 @@ const SpendingHistory = () => {
 
     const handleHover = (index) => {
         setHoveredIndex(index);
-        console.log(index)
     };
 
     const handleCancelHover = () => {
@@ -274,7 +273,7 @@ const SpendingHistory = () => {
                                                 <h5 className="description">{item.description}</h5>
                                                 <div className="data">
                                                     <h5
-                                                        className="category"
+                                                        className="categoryName"
                                                         style={{
                                                             color:
                                                                 item.category === 'Food'
@@ -298,7 +297,7 @@ const SpendingHistory = () => {
                                                     </h5>
                                                     <h5 className="date">
                                                         <img src={calendar} alt="" />
-                                                        {item.date}
+                                                        <span>{item.date}</span>
                                                     </h5>
                                                 </div>
                                             </div>

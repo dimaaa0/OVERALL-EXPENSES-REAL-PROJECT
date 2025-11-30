@@ -137,11 +137,10 @@
         display: grid;
         grid-template-columns: 1fr !important;
     }
-
 }
 
 @media (max-width:380px) {
-    .addName{
+    .addName {
         font-size: 1.3rem;
     }
 }
